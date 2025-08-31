@@ -66,3 +66,9 @@ coverage.xml
 
 # Pyre type checker
 .pyre/
+
+# MLX Fine-tuning directories
+training_*/
+
+# Test artifacts
+test_training_*/

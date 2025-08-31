@@ -2,14 +2,18 @@
 
 A user-friendly Streamlit interface for fine-tuning large language models using Apple's MLX framework. This application makes it easy for developers and researchers to fine-tune models with LoRA, DoRA, or full fine-tuning approaches.
 
+![MLX Fine-tuning UI Screenshot](ui-mock-1.png)
+
 ## Features ✨
 
 - **Easy Fine-tuning**: Configure and run LoRA, DoRA, or full fine-tuning with simple forms
 - **Dataset Support**: Use local JSONL files or HuggingFace datasets
 - **Model Inference**: Run inference with fine-tuned models or pre-trained models
-- **User-friendly Interface**: Intuitive UI with real-time progress tracking
+- **User-friendly Interface**: Intuitive dark-themed UI with real-time progress tracking
 - **Multiple Model Sources**: Support for local models, HuggingFace repositories, and fine-tuned adapters
 - **Comprehensive Configuration**: All training parameters configurable through the UI
+- **Comprehensive Testing**: Full test suite with pytest, coverage reporting, and CI/CD ready
+- **Make Commands**: Easy setup, testing, and deployment with simple make commands
 
 ## Installation 🛠️
 
@@ -23,36 +27,71 @@ A user-friendly Streamlit interface for fine-tuning large language models using 
 
 1. **Clone the repository:**
    ```bash
-   git clone <your-repo-url>
+   git clone https://github.com/adityak74/mlx-ui.git
    cd mlx-ui
    ```
 
-2. **Install dependencies:**
+2. **Quick Setup (Recommended):**
    ```bash
-   pip install -r requirements.txt
+   make setup
    ```
+   This will install all dependencies and run tests automatically.
 
-3. **Install MLX and mlx-lm:**
+3. **Manual Setup:**
    ```bash
+   # Install Python dependencies
+   pip install -r requirements.txt
+   
+   # Install MLX and mlx-lm
    pip install mlx
    pip install -e mlx-lm-main/
+   
+   # Install additional ML dependencies
+   pip install datasets transformers
    ```
 
-4. **Install additional ML dependencies:**
+4. **Verify Installation:**
    ```bash
-   pip install datasets transformers
+   make test
    ```
 
 ## Usage 🚀
 
 ### Starting the Application
 
-Run the Streamlit app:
+**Quick Start:**
+```bash
+make start
+```
+
+**Manual Start:**
 ```bash
 streamlit run app.py
 ```
 
 The application will open in your browser at `http://localhost:8501`
+
+### Available Commands
+
+The project includes helpful Make commands for development:
+
+```bash
+# Setup and Installation
+make setup          # Complete setup (install + test)
+make install        # Install all dependencies
+
+# Testing
+make test           # Run all tests
+make test-unit      # Run unit tests only
+make test-integration  # Run integration tests
+make test-training  # Run actual fine-tuning tests
+make test-coverage  # Run tests with coverage report
+
+# Development
+make start          # Start the application
+make clean          # Clean up temporary files
+make help           # Show all available commands
+```
 
 ### Fine-tuning a Model
 
@@ -141,10 +180,13 @@ Your dataset should be in JSONL format with the following structure:
 The application supports a wide range of models including:
 
 - **Mistral**: Mistral-7B, Mistral-7B-Instruct
-- **Llama**: Llama-2-7B, Llama-2-13B, Llama-2-70B
+- **Llama**: Llama-2-7B, Llama-2-13B, Llama-2-70B, Llama-3.2-1B-Instruct
 - **Gemma**: Gemma-2B, Gemma-7B
 - **Phi**: Phi-2, Phi-3
+- **MLX Community Models**: Optimized models from mlx-community
 - **And many more...**
+
+All models from HuggingFace that are compatible with MLX are supported.
 
 ## Examples 💡
 
@@ -162,6 +204,64 @@ The application supports a wide range of models including:
 2. Enter prompt: "Explain quantum computing in simple terms"
 3. Generate response with temperature 0.7
 
+## Testing 🧪
+
+The project includes a comprehensive test suite:
+
+### Running Tests
+
+```bash
+# Run all tests
+make test
+
+# Run specific test types
+make test-unit          # Fast unit tests
+make test-integration   # Integration tests
+make test-training      # Actual fine-tuning tests (slow)
+
+# Generate coverage report
+make test-coverage
+```
+
+### Test Coverage
+
+The test suite covers:
+- ✅ Fine-tuning functionality (local datasets)
+- ✅ HuggingFace dataset integration
+- ✅ Model loading and validation
+- ✅ Configuration management
+- ✅ Adapter file creation and validation
+- ✅ Error handling and edge cases
+
+Current test coverage: **39%** and growing!
+
+## Development 💻
+
+### Project Structure
+
+```
+mlx-ui/
+├── app.py                 # Main Streamlit application
+├── requirements.txt       # Python dependencies
+├── Makefile              # Development commands
+├── pytest.ini           # Test configuration
+├── tests/               # Test suite
+│   ├── conftest.py      # Test fixtures
+│   └── test_training.py # Training tests
+├── example_dataset/     # Sample dataset
+└── mlx-lm-main/        # MLX-LM submodule
+```
+
+### Contributing Guidelines
+
+1. **Fork the repository**
+2. **Create a feature branch**: `git checkout -b feature-name`
+3. **Make your changes**
+4. **Run tests**: `make test`
+5. **Commit changes**: `git commit -m "Description"`
+6. **Push to branch**: `git push origin feature-name`
+7. **Create Pull Request**
+
 ## Troubleshooting 🔧
 
 ### Common Issues
@@ -173,9 +273,18 @@ The application supports a wide range of models including:
 ### Performance Tips
 
 - Use gradient checkpointing for memory optimization
-- Start with smaller models for testing
+- Start with smaller models for testing (e.g., `mlx-community/Llama-3.2-1B-Instruct-4bit`)
 - Use LoRA instead of full fine-tuning for efficiency
 - Monitor memory usage during training
+- Test with the example dataset first
+
+### Getting Help
+
+1. **Check the logs**: Look at the terminal output for detailed error messages
+2. **Run diagnostics**: Use `make test` to verify your setup
+3. **Try the example**: Use the included example dataset to test functionality
+4. **Check documentation**: Review the configuration options in the UI
+5. **Open an issue**: Report bugs or request features on GitHub
 
 ## Contributing 🤝
 
