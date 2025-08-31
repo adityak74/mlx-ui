@@ -1,0 +1,9 @@
+streamlit>=1.28.0
+pyyaml>=6.0
+pandas>=2.0.0
+mlx>=0.0.8
+mlx-lm>=0.0.8
+numpy>=1.24.0
+tqdm>=4.65.0
+datasets>=2.14.0
+transformers>=4.30.0

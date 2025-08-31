@@ -1,0 +1,42 @@
+# Example MLX Fine-tuning Configuration
+# This file shows all available configuration options
+
+# Model Configuration
+model: "mistralai/Mistral-7B-v0.1"  # HuggingFace repo or local path
+fine_tune_type: "lora"  # Options: lora, dora, full
+num_layers: 16  # Number of layers to fine-tune (-1 for all)
+max_seq_length: 2048  # Maximum sequence length
+
+# Training Configuration
+batch_size: 4  # Training batch size
+iters: 1000  # Total training iterations
+learning_rate: 1e-5  # Learning rate
+optimizer: "adam"  # Options: adam, adamw, muon, sgd, adafactor
+
+# LoRA Parameters (for lora/dora fine-tuning)
+lora_parameters:
+  rank: 8  # LoRA rank
+  scale: 20.0  # LoRA scale
+  dropout: 0.0  # LoRA dropout
+
+# Dataset Configuration
+data: "data/"  # Path to dataset or HuggingFace dataset name
+
+# Training Schedule
+val_batches: 25  # Validation batches (-1 for entire set)
+steps_per_report: 10  # Report loss every N steps
+steps_per_eval: 200  # Run validation every N steps
+save_every: 100  # Save model every N steps
+
+# Advanced Options
+grad_checkpoint: false  # Enable gradient checkpointing
+mask_prompt: false  # Mask prompt tokens in loss
+seed: 42  # Random seed for reproducibility
+
+# Output Configuration
+adapter_path: "adapters"  # Path to save fine-tuned weights
+resume_adapter_file: null  # Path to resume training from
+
+# Logging Configuration
+report_to: null  # Options: wandb, swanlab, or comma-separated list
+project_name: null  # Project name for logging

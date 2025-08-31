@@ -1,0 +1,20 @@
+{"text": "The quick brown fox jumps over the lazy dog. This is a sample training example for fine-tuning language models."}
+{"text": "Machine learning is a subset of artificial intelligence that focuses on algorithms and statistical models."}
+{"text": "Natural language processing enables computers to understand, interpret, and generate human language."}
+{"text": "Deep learning uses neural networks with multiple layers to model complex patterns in data."}
+{"text": "Transfer learning allows models to leverage knowledge from pre-trained models for new tasks."}
+{"text": "Fine-tuning adapts pre-trained models to specific domains or tasks with additional training data."}
+{"text": "LoRA (Low-Rank Adaptation) is an efficient method for fine-tuning large language models."}
+{"text": "The transformer architecture revolutionized natural language processing with attention mechanisms."}
+{"text": "Attention is all you need - the title of the seminal paper that introduced transformers."}
+{"text": "Self-attention allows models to focus on different parts of the input sequence when processing each token."}
+{"text": "Gradient descent is an optimization algorithm used to minimize loss functions in machine learning."}
+{"text": "Backpropagation is a method for calculating gradients in neural networks."}
+{"text": "Regularization techniques help prevent overfitting in machine learning models."}
+{"text": "Cross-validation is a technique for assessing how well a model will generalize to new data."}
+{"text": "Hyperparameter tuning is the process of finding optimal values for model parameters."}
+{"text": "Data preprocessing involves cleaning and transforming raw data for machine learning."}
+{"text": "Feature engineering is the process of creating new features from existing data."}
+{"text": "Model evaluation metrics help assess the performance of machine learning models."}
+{"text": "Ensemble methods combine multiple models to improve prediction accuracy."}
+{"text": "Neural networks are computational models inspired by biological neural networks."}
